@@ -233,7 +233,7 @@ public class RestClient implements Closeable, StatsAware {
                 Integer status = (Integer) values.get("status");
 
                 String error = extractError(values);
-                if (error != null && !error.isEmpty()) {
+                if (error != null && !error.isEmpty() && (status == null || status != 409)) {
                     if ((status != null && HttpStatus.canRetry(status)) || error.contains("EsRejectedExecutionException")) {
                         entryToDeletePosition++;
                         if (errorMessagesSoFar < MAX_BULK_ERROR_MESSAGES) {

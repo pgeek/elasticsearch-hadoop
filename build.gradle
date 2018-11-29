@@ -47,7 +47,7 @@ def java8 = org.gradle.api.JavaVersion.current().isJava8Compatible()
 // Hadoop aliases
 def hadoopStableVersion = hadoop12Version
 def hadoopYarnVersion = hadoop2Version
-def hadoopVersion = hadoopStableVersion 
+def hadoopVersion = hadoopYarnVersion
 def hadoopMsg;
 
 switch (hadoopDistro) {
@@ -553,7 +553,7 @@ project(":elasticsearch-hadoop-hive") {
 
 // reusable method to nest Map/Reduce module in the rest of the projects to make them usable stand-alone
 def baseSparkProject(target, sparkVersion) {
-   def scalaVer = project.hasProperty("scala") ? project.getProperty("scala") : "210"
+   def scalaVer = '211'//project.hasProperty("scala") ? project.getProperty("scala") : "210"
 
     switch (scalaVer) {
       case "211":
